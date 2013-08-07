@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<title>Demo</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="validate.js"></script>
+	<script src="vtwin.js"></script>
+	<style>
+		.error { color: #f00; }
+	</style>
+</head>
+<body>
+	<form method="post" action="handler.php" id="myform" name="myform" novalidate>
+		<p>
+			<label for="yourname">Username</label>
+			<input type="text" id="yourname" name="yourname" />
+		</p>
+		<p>
+			<label for="favnumber">Your favorite number</label>
+			<input type="text" id="favnumber" name="favnumber" />
+		</p>
+		<p>
+			<label for="email">Email address</label>
+			<input type="email" id="email" name="email" />
+		</p>
+		<p>
+			<input type="submit" name="submitdemo" value="Submit form" />
+		</p>
+	</form>
+	<script>
+
+		// Init the vtwin javascript, optional wrapper argument
+		// Vtwin.init(str formId, obj customData, bool skipServersideCheck);
+		Vtwin.init("myform",{"submitdemo":1});
+
+		// Define error handler. You will need to do all the DOM inserts yourself
+		Vtwin.errors(function(fieldId, message) {
+			$(fieldId).after('<em class="error">'+message+'</em>');
+		});
+	</script>
+</body>
+</html>
